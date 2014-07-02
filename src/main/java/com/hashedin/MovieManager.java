@@ -143,7 +143,7 @@ public class MovieManager {
 	   
 	   mf.setUserMap(userMap);
 	   mf.setMovieMap(movieMap);
-	   mf.mostPopularMovie();
+	   mf.mostWatchedMovie();
 	
 	
 	}
