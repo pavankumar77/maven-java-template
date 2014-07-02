@@ -45,13 +45,12 @@ public class MovieFreak {
 			}
 
 		});
-		
-		System.out.println("mostWatchedMovie:"+m2.getMovieName());
+
+		System.out.println("mostWatchedMovie:" + m2.getMovieName());
 
 		return m2;
 	}
 
-	
 	public User mostActiveuser() {
 		User u1 = new User();
 
@@ -62,14 +61,20 @@ public class MovieFreak {
 			}
 		});
 
-		System.out.println("mostActiveuser:"+u1.getUserid());
+		System.out.println("mostActiveuser:" + u1.getUserid());
 
 		return u1;
 	}
+
+	public Movie mostPopularmovie(String year) {
 	
-	public Movie mostPopularmovie(){
+		List<Movie> yearList = new ArrayList<Movie>();
+	
+		yearList = yearfilter(year);
+		
+		
 		Movie m2 = new Movie();
-		m2 = Collections.max(movieList, new Comparator<Movie>() {
+		m2 = Collections.max(yearList, new Comparator<Movie>() {
 
 			public int compare(Movie o1, Movie o2) {
 				return Integer.compare(o1.getAverageratings(),
@@ -77,13 +82,34 @@ public class MovieFreak {
 			}
 
 		});
-		
-		System.out.println("mostPopularMovie:"+m2.getMovieName());
+
+		System.out.println("mostPopularMovie:" + m2.getMovieName());
 
 		return m2;
+
+	}
+
+	public List<Movie> yearfilter(String year) {
+
+		List<Movie> yearList = new ArrayList<Movie>();
+
+		// System.out.println(" Year" + year);
+
+		for (Movie movie : movieList) {
+			String r;
+			r = movie.getReleaseDate();
+			// System.out.println("Release : " + r);
+			boolean b = year.regionMatches(0, r, 7, 4);
+			// System.out.println(" Matches " + b);
+			if (b) {
+
+				yearList.add(movie);
+			}
+		}
+		//System.out.println(yearList);
+
+	return yearList;	
 		
 	}
-	
-	
 
 }

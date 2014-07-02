@@ -150,6 +150,7 @@ public class MovieManager {
 		mf.setMovieMap(movieMap);
 		mf.mostWatchedMovie();
 		mf.mostActiveuser();
-		mf.mostPopularmovie();
+		mf.mostPopularmovie("1995");
+		//mf.yearfilter("1995");
 	}
 }
