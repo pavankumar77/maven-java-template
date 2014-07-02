@@ -37,6 +37,9 @@ public class MovieFreak {
 
 		// System.out.println(m1.getMovieName());
 
+		
+		
+		
 		m2 = Collections.max(movieList, new Comparator<Movie>() {
 
 			public int compare(Movie o1, Movie o2) {
@@ -133,6 +136,33 @@ public class MovieFreak {
 		// System.out.println(genreList);
 		return genreList;
 	}
+	
+	
+	public void  mostWatchedGenre(String genre){
+		
+		List<Movie> genreList = new ArrayList<Movie>();
+		
+		genreList = genreFilter(genre);
+		Movie m2= new Movie();
+		
+		m2 = Collections.max(genreList, new Comparator<Movie>() {
+
+			public int compare(Movie o1, Movie o2) {
+				return Integer.compare(o1.getTotalviewers(),
+						o2.getTotalviewers());
+			}
+
+		});
+
+		System.out.println("mostWatchedMovie in Genre:" + m2.getMovieName());
+
+		
+		
+		
+	}
+	
+	
+	
 
 	public int genreindex(String genre) {
 

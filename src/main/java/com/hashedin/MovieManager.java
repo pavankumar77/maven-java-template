@@ -151,6 +151,8 @@ public class MovieManager {
 		mf.mostWatchedMovie();
 		mf.mostActiveuser();
 		mf.topMovie("1995");
+		mf.mostWatchedGenre("Drama");
+		mf.highestRatedGenre("Drama");
 		//mf.genreFilter("Drama");
 	}
 }
