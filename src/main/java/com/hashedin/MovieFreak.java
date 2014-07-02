@@ -66,5 +66,24 @@ public class MovieFreak {
 
 		return u1;
 	}
+	
+	public Movie mostPopularmovie(){
+		Movie m2 = new Movie();
+		m2 = Collections.max(movieList, new Comparator<Movie>() {
+
+			public int compare(Movie o1, Movie o2) {
+				return Integer.compare(o1.getAverageratings(),
+						o2.getAverageratings());
+			}
+
+		});
+		
+		System.out.println("mostPopularMovie:"+m2.getMovieName());
+
+		return m2;
+		
+	}
+	
+	
 
 }

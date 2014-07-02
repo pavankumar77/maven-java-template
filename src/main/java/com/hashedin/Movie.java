@@ -10,7 +10,16 @@ public class Movie {
 	String url;
 	int totalrating;
 	int totalviewers;
-	
+	int averageratings;
+
+	public int getAverageratings() {
+		return averageratings;
+	}
+
+	public void setAverageratings(int averageratings) {
+		this.averageratings = averageratings;
+	}
+
 	public ArrayList<String> genre = new ArrayList<String>();
 
 	@Override

@@ -22,7 +22,7 @@ public class MovieManager {
 		for (String line : lines) {
 			Movie m = createMovie(line);
 			movies.put(Integer.toString(m.getId()), m);
-		System.out.println(m);
+		//	System.out.println(m);
 		}
 		return movies;
 	}
@@ -37,13 +37,11 @@ public class MovieManager {
 		m.setReleaseDate(st.nextToken());
 		m.setUrl(st.nextToken());
 
+		while (st.hasMoreTokens()) {
+			m.genre.add(st.nextToken());
 
-		while(st.hasMoreTokens())
-		 {
-		 m.genre.add(st.nextToken());
+		}
 
-		   }		
-		
 		// for (int i = 0; i < 20; ++i)
 		// {
 		// System.out.println("I : " + i);
@@ -98,7 +96,9 @@ public class MovieManager {
 
 			m.setTotalrating(addr);
 			m.setTotalviewers(addt);
-
+			int average =(addr/addt);
+			
+			m.setAverageratings(average);
 			// System.out.println(m.getTotalrating());
 
 			int userId = r.getUserid();
@@ -140,9 +140,9 @@ public class MovieManager {
 				mm.getClass().getClassLoader()
 						.getResourceAsStream("ratings.data"), userMap, movieMap);
 
-		// Movie m = movieMap.get("23");
+		 Movie m = movieMap.get("23");
 
-		// System.out.println(m.getTotalrating());
+		// System.out.println(m.getAverageratings());
 
 		MovieFreak mf = new MovieFreak();
 
@@ -150,6 +150,6 @@ public class MovieManager {
 		mf.setMovieMap(movieMap);
 		mf.mostWatchedMovie();
 		mf.mostActiveuser();
-
+		mf.mostPopularmovie();
 	}
 }
