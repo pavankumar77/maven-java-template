@@ -155,13 +155,31 @@ public class MovieFreak {
 		});
 
 		System.out.println("mostWatchedMovie in Genre:" + m2.getMovieName());
-
-		
-		
-		
+	
 	}
 	
+public void highestRatedGenre(String genre){
 	
+	List<Movie> genreList = new ArrayList<Movie>();
+	
+	genreList = genreFilter(genre);
+	Movie m2= new Movie();
+	
+	m2 = Collections.max(genreList, new Comparator<Movie>() {
+
+		public int compare(Movie o1, Movie o2) {
+			return Integer.compare(o1.getTotalrating(),
+					o2.getTotalrating());
+		}
+
+	});
+	
+	
+	
+	System.out.println("highestRatedGenre:"+m2.getMovieName());
+	
+	
+}
 	
 
 	public int genreindex(String genre) {
