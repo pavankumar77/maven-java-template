@@ -138,7 +138,12 @@ public class MovieManager {
 		
 	   System.out.println(m.getTotalrating());
 	
-	
+	   MovieFreak mf = new MovieFreak();
+	   
+	   
+	   mf.setUserMap(userMap);
+	   mf.setMovieMap(movieMap);
+	   mf.mostPopularMovie();
 	
 	
 	}
