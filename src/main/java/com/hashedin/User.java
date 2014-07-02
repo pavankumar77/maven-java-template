@@ -5,8 +5,6 @@ public class User {
 	
 	private int userid ,count;
 	
-	
-	
 	public int getUserid() {
 		return userid;
 	}

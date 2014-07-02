@@ -22,7 +22,7 @@ public class MovieManager {
 		for (String line : lines) {
 			Movie m = createMovie(line);
 			movies.put(Integer.toString(m.getId()), m);
-			// System.out.println(m);
+		System.out.println(m);
 		}
 		return movies;
 	}
@@ -36,6 +36,20 @@ public class MovieManager {
 		m.setMovieName(st.nextToken());
 		m.setReleaseDate(st.nextToken());
 		m.setUrl(st.nextToken());
+
+
+		while(st.hasMoreTokens())
+		 {
+		 m.genre.add(st.nextToken());
+
+		   }		
+		
+		// for (int i = 0; i < 20; ++i)
+		// {
+		// System.out.println("I : " + i);
+		// m.setGenre(i, (st.nextToken()));
+
+		// }
 
 		return m;
 
@@ -75,21 +89,18 @@ public class MovieManager {
 		for (String line : lines) {
 
 			Ratings r = createRatings(line);
-			//System.out.println("...movie id.." + r.getMovieid());
+			// System.out.println("...movie id.." + r.getMovieid());
 			int movieId = r.getMovieid();
 			Movie m = Movies1.get(Integer.toString(movieId));
-			
-			
-			
+
 			int addr = m.getTotalrating() + r.getRatings();
 			int addt = m.getTotalviewers() + 1;
 
 			m.setTotalrating(addr);
 			m.setTotalviewers(addt);
-			
-		//	System.out.println(m.getTotalrating());
 
-			
+			// System.out.println(m.getTotalrating());
+
 			int userId = r.getUserid();
 			User u = User1.get(Integer.toString(userId));
 
@@ -97,7 +108,6 @@ public class MovieManager {
 
 			u.setCount(addc);
 
-			
 		}
 	}
 
@@ -112,8 +122,6 @@ public class MovieManager {
 		m.setRatings(Integer.parseInt(st.nextToken()));
 		m.setTimestamp(Integer.parseInt(st.nextToken()));
 
-		
-		
 		return m;
 
 	}
@@ -129,26 +137,19 @@ public class MovieManager {
 				.getClassLoader().getResourceAsStream("user.data"));
 
 		mm.addratings(
-			mm.getClass().getClassLoader()
-				.getResourceAsStream("ratings.data"), userMap, movieMap);
+				mm.getClass().getClassLoader()
+						.getResourceAsStream("ratings.data"), userMap, movieMap);
 
-	
-	
-	//	Movie m = movieMap.get("23");
-		
-	   //System.out.println(m.getTotalrating());
-	
-	   MovieFreak mf = new MovieFreak();
-	   
-	   
-	   mf.setUserMap(userMap);
-	   mf.setMovieMap(movieMap);
-	   mf.mostWatchedMovie();
-	   mf.mostActiveuser();
-	   
-	
+		// Movie m = movieMap.get("23");
+
+		// System.out.println(m.getTotalrating());
+
+		MovieFreak mf = new MovieFreak();
+
+		mf.setUserMap(userMap);
+		mf.setMovieMap(movieMap);
+		mf.mostWatchedMovie();
+		mf.mostActiveuser();
+
 	}
 }
-
-
-
