@@ -36,7 +36,7 @@ public class MovieFreak {
 		System.out.println("mostActiveuser:" + u1.getUserid());
 
 	}
-
+//to find top movie
 	public void  topMovie(List<Movie> movielist, String category) {
 
 		Movie m = new Movie();
@@ -52,11 +52,8 @@ public class MovieFreak {
 
 		System.out.println("TopMovie  " + category + "  :   "
 				+ m.getMovieName());
-
-		
-
 	}
-
+//to find  mostWatchedMovie
 	public void mostWatchedMovie(List<Movie> movielist, String name) {
 
 		Movie m = new Movie();
