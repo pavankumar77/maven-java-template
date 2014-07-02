@@ -6,6 +6,11 @@ public class Movie {
 	private String movieName ;
 	private String releaseDate;
 	private String url;
+    private int totalrating ;
+	private int totalviewers;
+    
+    
+    
 	public int getId() {
 		return id;
 	}
@@ -30,13 +35,19 @@ public class Movie {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	@Override
 	
-	public String toString() {
-		return "movie [id=" + id + ", movieName=" + movieName
-				+ ", releaseDate=" + releaseDate + ", url=" + url + "]";
+	public int getTotalrating() {
+		return totalrating;
 	}
-	
-	
+	public void setTotalrating(int totalrating) {
+		this.totalrating = totalrating;
+	}
+	public int getTotalviewers() {
+		return totalviewers;
+	}
+	public void setTotalviewers(int totalviewers) {
+		this.totalviewers = totalviewers;
+	}
+		
 	
 }

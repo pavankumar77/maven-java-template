@@ -1,38 +1,35 @@
 package com.hashedin;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import java.io.IOException;
+import java.util.Map;
 
-/**
- * Unit test for simple App.
- */
+import junit.framework.TestCase;
+
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+   	 public void testApp() throws IOException
+	    {
+	    	MovieManager mm = new MovieManager();
+	    	Map<String, Movie> movieMap = mm.getMovies(mm.getClass().getClassLoader().getResourceAsStream("testdata.data"));
+	        Movie m = movieMap.get("1");
+	      	
+	        assertEquals(movieMap.size(), 3);
+	      	assertEquals(m.getMovieName(), "Toy Story (1995)");		
+	      			
+	      			
+	    }
+	 
+	 public void testApp1() throws IOException
+	    {
+	    	MovieManager mm = new MovieManager();
+	    	Map<String, Movie> userMap = mm.getMovies(mm.getClass().getClassLoader().getResourceAsStream("testdata.data"));
+	        Movie m = userMap.get("1");
+	     
+	        assertEquals(userMap.size(), 3);
+	      	assertEquals(m.getMovieName(), "Toy Story (1995)");		
+	      			
+	      			
+	    }
+	 
 }
