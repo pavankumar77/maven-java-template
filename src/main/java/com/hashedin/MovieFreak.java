@@ -66,15 +66,14 @@ public class MovieFreak {
 		return u1;
 	}
 
-	public Movie mostPopularmovie(String year) {
-	
-		List<Movie> yearList = new ArrayList<Movie>();
-	
-		yearList = yearfilter(year);
-		
-		
+	public Movie topMovie(String year) {
+
+		List<Movie> List = new ArrayList<Movie>();
+
+		List = genreFilter(year);
+
 		Movie m2 = new Movie();
-		m2 = Collections.max(yearList, new Comparator<Movie>() {
+		m2 = Collections.max(List, new Comparator<Movie>() {
 
 			public int compare(Movie o1, Movie o2) {
 				return Integer.compare(o1.getAverageratings(),
@@ -89,7 +88,7 @@ public class MovieFreak {
 
 	}
 
-	public List<Movie> yearfilter(String year) {
+	public List<Movie> yearFilter(String year) {
 
 		List<Movie> yearList = new ArrayList<Movie>();
 
@@ -106,10 +105,102 @@ public class MovieFreak {
 				yearList.add(movie);
 			}
 		}
-		//System.out.println(yearList);
+		// System.out.println(yearList);
 
-	return yearList;	
-		
+		return yearList;
+
+	}
+
+	public List<Movie> genreFilter(String genre) {
+
+		int index = 0;
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		index = genreindex(genre);
+	//	System.out.println(index);
+		for (Movie movie : movieList) {
+
+			String b = movie.genre.get(index);
+		//	System.out.println(b);
+			if (Integer.parseInt(b) == 1) {
+
+			//	System.out.println("yes");
+				genreList.add(movie);
+				// System.out.println(genreList);
+			}
+
+		}
+		// System.out.println(genreList);
+		return genreList;
+	}
+
+	public int genreindex(String genre) {
+
+		int index = 0;
+
+		switch (genre) {
+		case "unknown":
+			index = 0;
+			break;
+		case "Action":
+			index = 1;
+			break;
+		case "Adventure":
+			index = 2;
+			break;
+		case "Animation":
+			index = 3;
+			break;
+		case "Children":
+			index = 4;
+			break;
+		case "Comedy":
+			index = 5;
+			break;
+		case "Crime":
+			index = 6;
+			break;
+		case "Documentary":
+			index = 7;
+			break;
+		case "Drama":
+			index = 8;
+			break;
+		case "Fantasy":
+			index = 9;
+			break;
+		case "Film-Noir":
+			index = 10;
+			break;
+		case "Horror":
+			index = 11;
+			break;
+		case "Musical":
+			index = 12;
+			break;
+		case "Mystery":
+			index = 13;
+			break;
+		case "Romance":
+			index = 14;
+			break;
+		case "Sci-Fi":
+			index = 15;
+			break;
+		case "Thriller":
+			index = 16;
+			break;
+		case "War":
+			index = 17;
+			break;
+		case "Western":
+			index = 18;
+			break;
+
+		}
+		System.out.println("hi");
+		return index;
+
 	}
 
 }
