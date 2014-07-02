@@ -23,41 +23,10 @@ public class MovieFreak {
 
 	}
 
-	public Movie mostWatchedMovie() {
-
-		// Movie m1 = new Movie();
-		Movie m2 = new Movie();
-		// for (Movie m21 :movieList){
-
-		// if( m21.getTotalviewers()>m1.getTotalviewers())
-		// {
-		// m1= m21;
-		// }
-		// }
-
-		// System.out.println(m1.getMovieName());
-
-		
-		
-		
-		m2 = Collections.max(movieList, new Comparator<Movie>() {
-
-			public int compare(Movie o1, Movie o2) {
-				return Integer.compare(o1.getTotalviewers(),
-						o2.getTotalviewers());
-			}
-
-		});
-
-		System.out.println("mostWatchedMovie:" + m2.getMovieName());
-
-		return m2;
-	}
-
-	public User mostActiveuser() {
+	public void mostActiveuser(List<User> ulist) {
 		User u1 = new User();
 
-		u1 = Collections.max(userList, new Comparator<User>() {
+		u1 = Collections.max(ulist, new Comparator<User>() {
 			public int compare(User o1, User o2) {
 				return Integer.compare(o1.getCount(), o2.getCount());
 
@@ -66,17 +35,13 @@ public class MovieFreak {
 
 		System.out.println("mostActiveuser:" + u1.getUserid());
 
-		return u1;
 	}
 
-	public Movie topMovie(String year) {
+	public void  topMovie(List<Movie> movielist, String category) {
 
-		List<Movie> List = new ArrayList<Movie>();
+		Movie m = new Movie();
 
-		List = genreFilter(year);
-
-		Movie m2 = new Movie();
-		m2 = Collections.max(List, new Comparator<Movie>() {
+		m = Collections.max(movielist, new Comparator<Movie>() {
 
 			public int compare(Movie o1, Movie o2) {
 				return Integer.compare(o1.getAverageratings(),
@@ -85,67 +50,18 @@ public class MovieFreak {
 
 		});
 
-		System.out.println("mostPopularMovie:" + m2.getMovieName());
+		System.out.println("TopMovie  " + category + "  :   "
+				+ m.getMovieName());
 
-		return m2;
+		
 
 	}
 
-	public List<Movie> yearFilter(String year) {
+	public void mostWatchedMovie(List<Movie> movielist, String name) {
 
-		List<Movie> yearList = new ArrayList<Movie>();
+		Movie m = new Movie();
 
-		// System.out.println(" Year" + year);
-
-		for (Movie movie : movieList) {
-			String r;
-			r = movie.getReleaseDate();
-			// System.out.println("Release : " + r);
-			boolean b = year.regionMatches(0, r, 7, 4);
-			// System.out.println(" Matches " + b);
-			if (b) {
-
-				yearList.add(movie);
-			}
-		}
-		// System.out.println(yearList);
-
-		return yearList;
-
-	}
-
-	public List<Movie> genreFilter(String genre) {
-
-		int index = 0;
-		List<Movie> genreList = new ArrayList<Movie>();
-
-		index = genreindex(genre);
-	//	System.out.println(index);
-		for (Movie movie : movieList) {
-
-			String b = movie.genre.get(index);
-		//	System.out.println(b);
-			if (Integer.parseInt(b) == 1) {
-
-			//	System.out.println("yes");
-				genreList.add(movie);
-				// System.out.println(genreList);
-			}
-
-		}
-		// System.out.println(genreList);
-		return genreList;
-	}
-	
-	
-	public void  mostWatchedGenre(String genre){
-		
-		List<Movie> genreList = new ArrayList<Movie>();
-		
-		genreList = genreFilter(genre);
-		Movie m2= new Movie();
-		
-		m2 = Collections.max(genreList, new Comparator<Movie>() {
+		m = Collections.max(movielist, new Comparator<Movie>() {
 
 			public int compare(Movie o1, Movie o2) {
 				return Integer.compare(o1.getTotalviewers(),
@@ -154,33 +70,136 @@ public class MovieFreak {
 
 		});
 
-		System.out.println("mostWatchedMovie in Genre:" + m2.getMovieName());
-	
-	}
-	
-public void highestRatedGenre(String genre){
-	
-	List<Movie> genreList = new ArrayList<Movie>();
-	
-	genreList = genreFilter(genre);
-	Movie m2= new Movie();
-	
-	m2 = Collections.max(genreList, new Comparator<Movie>() {
+		System.out.println("mostWatchedMovie   " + name + " :  "
+				+ m.getMovieName());
 
-		public int compare(Movie o1, Movie o2) {
-			return Integer.compare(o1.getTotalrating(),
-					o2.getTotalrating());
+		
+	}
+
+	public void highest(List<Movie> movieList,String name) {
+
+		Movie m = new Movie();
+
+		m = Collections.max(movieList, new Comparator<Movie>() {
+
+			public int compare(Movie o1, Movie o2) {
+				return Integer.compare(o1.getTotalrating(), o2.getTotalrating());
+			}
+
+		});
+		System.out.println("highest Rated "+ name +":"+ m.getMovieName());
+
+	
+
+	}
+
+	public List<Movie> yearFilter(List<Movie> movielist, String year) {
+
+		List<Movie> yearList = new ArrayList<Movie>();
+
+		for (Movie movie : movielist) {
+			String r;
+			r = movie.getReleaseDate();
+
+			boolean b = year.regionMatches(0, r, 7, 4);
+			if (b) {
+
+				yearList.add(movie);
+			}
 		}
 
-	});
-	
-	
-	
-	System.out.println("highestRatedGenre:"+m2.getMovieName());
-	
-	
-}
-	
+		return yearList;
+
+	}
+
+	public List<Movie> genreFilter(List<Movie> movieList, String genre) {
+
+		int index = 0;
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		index = genreindex(genre);
+
+		for (Movie movie : movieList) {
+
+			String b = movie.genre.get(index);
+
+			if (Integer.parseInt(b) == 1) {
+				genreList.add(movie);
+			}
+
+		}
+		return genreList;
+	}
+
+	public void mostWatchedGenre(List<Movie> gList, String genre) {
+
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		genreList = genreFilter(gList, genre);
+
+		Movie m = new Movie();
+
+	 mostWatchedMovie(genreList, genre);
+
+		// System.out.println("mostWatchedMovie in Genre:" + m2.getMovieName());
+
+	}
+
+	public void highestRatedGenre(List<Movie> glist, String genre) {
+
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		genreList = genreFilter(glist, genre);
+		Movie m = new Movie();
+
+		 highest(genreList,genre);
+
+		
+	}
+
+	public void topMovieByYearAndGenre(List<Movie> glist, String year,
+			String genre) {
+
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		List<Movie> yearList = new ArrayList<Movie>();
+
+		genreList = genreFilter(glist, genre);
+		yearList = yearFilter(genreList, year);
+
+		Movie m1 = new Movie();
+		
+		//year.concat(genre);
+
+		 topMovie(yearList, year +" "+ genre);
+
+//		System.out.println("TopMovie by year and genre:" + m1.getMovieName());
+
+	}
+
+	public void topmovieGenre(List<Movie> glist, String genre) {
+
+		List<Movie> genreList = new ArrayList<Movie>();
+
+		genreList = genreFilter(glist, genre);
+
+		Movie m1 = new Movie();
+
+		topMovie(genreList, genre);
+
+	}
+
+	public void topmovieYear(List<Movie> ylist, String year) {
+
+		List<Movie> yearList = new ArrayList<Movie>();
+
+		yearList = yearFilter(ylist, year);
+
+		Movie m1 = new Movie();
+
+		 topMovie(yearList, year);
+
+	}
 
 	public int genreindex(String genre) {
 
@@ -246,7 +265,7 @@ public void highestRatedGenre(String genre){
 			break;
 
 		}
-		System.out.println("hi");
+
 		return index;
 
 	}

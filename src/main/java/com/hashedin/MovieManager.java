@@ -140,19 +140,29 @@ public class MovieManager {
 				mm.getClass().getClassLoader()
 						.getResourceAsStream("ratings.data"), userMap, movieMap);
 
-		 Movie m = movieMap.get("23");
+		 
 
-		// System.out.println(m.getAverageratings());
-
+		List<Movie> movieList = new ArrayList<Movie>(movieMap.values());
+		List<User>  userList = new ArrayList<User>(userMap.values());
+		
+	//	Movie m = movieMap.get("1");
+	//	System.out.println(m.getTotalviewers());
+		 
 		MovieFreak mf = new MovieFreak();
 
 		mf.setUserMap(userMap);
 		mf.setMovieMap(movieMap);
-		mf.mostWatchedMovie();
-		mf.mostActiveuser();
-		mf.topMovie("1995");
-		mf.mostWatchedGenre("Drama");
-		mf.highestRatedGenre("Drama");
-		//mf.genreFilter("Drama");
+		
+		
+		mf.mostWatchedMovie(movieList,"overall");
+		mf.mostActiveuser(userList);
+		mf.topMovie(movieList,"overall");
+		mf.mostWatchedGenre(movieList,"Animation");
+		mf.highestRatedGenre(movieList,"Drama");
+		mf.topmovieGenre(movieList, "Animation");
+		mf.topmovieYear(movieList, "1995");
+		mf.topMovieByYearAndGenre(movieList, "1998", "Drama");
+		
 	}
+	
 }
