@@ -87,7 +87,7 @@ public class MovieManager {
 			m.setTotalrating(addr);
 			m.setTotalviewers(addt);
 			
-			System.out.println(m.getTotalrating());
+		//	System.out.println(m.getTotalrating());
 
 			
 			int userId = r.getUserid();
@@ -134,9 +134,9 @@ public class MovieManager {
 
 	
 	
-		Movie m = movieMap.get("23");
+	//	Movie m = movieMap.get("23");
 		
-	   System.out.println(m.getTotalrating());
+	   //System.out.println(m.getTotalrating());
 	
 	   MovieFreak mf = new MovieFreak();
 	   
@@ -144,7 +144,8 @@ public class MovieManager {
 	   mf.setUserMap(userMap);
 	   mf.setMovieMap(movieMap);
 	   mf.mostWatchedMovie();
-	
+	   mf.mostActiveuser();
+	   
 	
 	}
 }
